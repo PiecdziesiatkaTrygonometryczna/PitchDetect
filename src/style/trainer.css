@@ -1,3 +1,9 @@
+.notes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .trainer {
     color: rgb(255, 45, 192);
     font-size: 100px;
@@ -18,4 +24,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#recent-notes {
+    margin-right: 20px;
 }

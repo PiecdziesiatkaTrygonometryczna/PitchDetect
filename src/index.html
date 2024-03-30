@@ -13,13 +13,18 @@
 
 <body>
 
-	<div>
+	<div class="tuner">
 
 
-		<p>
-			<button onclick="startPitchDetect();">Włącz stroik</button>
-			<button onclick="stopPitchDetect();">Wyłącz stroik</button>
-		</p>
+		<div class="div-switch">
+			<div>Stroik Off/On</div>
+			<div>
+				<label class="switch">
+					<input type="checkbox" id="pitchToggle" onclick="toggleTuner()">
+					<span class="slider round"></span>
+				</label>
+			</div>
+		</div>
 
 		<div id="detector" class="vague off">
 			<div class="pitch"><span id="pitch">--</span>Hz</div>
@@ -28,8 +33,18 @@
 			<div id="detune"><span id="detune_amt">--</span><span id="flat">cents &#9837;</span><span id="sharp">cents
 					&#9839;</span></div>
 		</div>
-
 	</div>
+
+
+
+
+	<div class="notes">
+		<div class="recent-notes-container">
+			<div id="recent-notes"></div>
+		</div>
+		<div class="trainer"></div>
+	</div>
+
 
 
 
@@ -46,15 +61,6 @@
 		<button onclick="selectNaturalNotes()">Tylko naturalne dźwięki</button>
 		<button onclick="selectSharpNotes()">Tylko dźwięki z krzyżykami</button>
 	</div>
-
-
-	<div class="recent-notes-container">
-		<div id="recent-notes"></div>
-	</div>
-
-	<div class="trainer"></div>
-
-
 
 
 	<script src="script/trainer.js"></script>

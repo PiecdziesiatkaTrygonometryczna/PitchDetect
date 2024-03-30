@@ -3,8 +3,26 @@ const naturalNotes = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 const sharpNotes = ['A#', 'C#', 'D#', 'F#', 'G#'];
 let selectedNotes = [];
 let recentNotesArray = [];
-const recentlyNotesToDisplay = 6    ;
+const recentlyNotesToDisplay = 6;
 let interval = 2;
+
+
+// turn tuner on and off
+function toggleTuner() {
+    const detector = document.getElementById('detector');
+    const checkbox = document.getElementById('pitchToggle');
+
+    if (checkbox.checked) {
+        startPitchDetect();
+        detector.classList.remove('off');
+    } else {
+        stopPitchDetect();
+        detector.classList.add('off');
+    }
+}
+
+
+
 
 // create a checkbox for each note
 const checkboxesContainer = document.getElementById('checkboxes-container');
@@ -81,8 +99,9 @@ function displayRecentNotes() {
     for (let i = 0; i < recentNotesArray.length - 1; i++) {
         const note = recentNotesArray[i];
         const noteElement = document.createElement('div');
-        noteElement.textContent = note;
+        noteElement.textContent = note + "   ";
         noteElement.style.display = 'inline-block';
+        noteElement.style.marginRight = '10px';
         recentNotesContainer.appendChild(noteElement);
     }
 }
