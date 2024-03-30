@@ -8,6 +8,7 @@
 
 div.confident {
     color: rgb(255, 5, 192);
+
 }
 
 div.confident .off {
@@ -15,7 +16,7 @@ div.confident .off {
 }
 
 div.vague {
-    color: rgb(255, 164, 207);
+    color: rgb(218, 165, 190);
 }
 
 div.off {
@@ -33,12 +34,21 @@ div.off {
 #detector {
     width: 300px;
     height: 300px;
-    border: 4px solid gray;
     border-radius: 8px;
     text-align: center;
     padding-top: 10px;
 }
+#detector.confident {
+    border: 4px solid rgb(255, 5, 192);
+}
 
+#detector.vague {
+    border: 4px solid rgb(218, 165, 190);
+}
+
+#detector.off {
+    border: 4px solid gray;
+}
 #output {
     width: 300px;
     height: 42px;
