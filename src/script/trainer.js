@@ -43,17 +43,20 @@ form.addEventListener('submit', function (event) {
 function selectNaturalNotes() {
     notes.forEach(note => {
         document.getElementById(note).checked = naturalNotes.includes(note);
+        startButton.disabled = false;
     });
 }
 
 function selectSharpNotes() {
     notes.forEach(note => {
         document.getElementById(note).checked = sharpNotes.includes(note);
+        startButton.disabled = false;
     });
 }
 function selectAllNotes() {
     notes.forEach(note => {
         document.getElementById(note).checked = true;
+        startButton.disabled = false;
     });
 }
 
