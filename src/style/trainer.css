@@ -1,12 +1,21 @@
 .trainer {
-    color: rgb(255, 45, 192);   
+    color: rgb(255, 45, 192);
     font-size: 100px;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
 
 }
 
 .settings {
-text-align: center;
+    text-align: center;
+}
+
+
+.recent-notes-container {
+    color: rgb(153, 153, 153);
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

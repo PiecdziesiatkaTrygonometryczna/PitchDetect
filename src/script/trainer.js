@@ -3,6 +3,7 @@ const naturalNotes = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 const sharpNotes = ['A#', 'C#', 'D#', 'F#', 'G#'];
 let selectedNotes = [];
 let recentNotesArray = [];
+const recentlyNotesToDisplay = 6    ;
 let interval = 2;
 
 // create a checkbox for each note
@@ -37,7 +38,7 @@ form.addEventListener('submit', function (event) {
     checkboxes.forEach(function (checkbox) {
         selectedNotes.push(checkbox.value);
     });
-    console.log(selectedNotes);
+    // console.log(selectedNotes);
 });
 
 // functions to select specific notes
@@ -62,6 +63,31 @@ function selectAllNotes() {
 }
 
 
+// add recently genereated notes to array
+function addRecentNotes(note) {
+    if (recentNotesArray.length >= recentlyNotesToDisplay) {
+        recentNotesArray.shift();
+    }
+    recentNotesArray.push(note);
+    // console.log(recentNotesArray);
+    displayRecentNotes();
+}
+
+// display recently generated notes - except last one
+function displayRecentNotes() {
+    const recentNotesContainer = document.getElementById('recent-notes');
+    recentNotesContainer.innerHTML = '';
+
+    for (let i = 0; i < recentNotesArray.length - 1; i++) {
+        const note = recentNotesArray[i];
+        const noteElement = document.createElement('div');
+        noteElement.textContent = note;
+        noteElement.style.display = 'inline-block';
+        recentNotesContainer.appendChild(noteElement);
+    }
+}
+
+
 // display a random note from selected notes
 const trainerSection = document.querySelector('.trainer');
 let intervalId;
@@ -69,6 +95,7 @@ function displayRandomNote() {
     const randomIndex = Math.floor(Math.random() * selectedNotes.length);
     const randomNote = selectedNotes[randomIndex];
     trainerSection.textContent = randomNote;
+    addRecentNotes(randomNote);
 }
 
 // set an interval 
