@@ -1,0 +1,7 @@
+#random-note-container {
+    position: fixed;
+    top: 50%;
+    right: 30vw;
+    transform: translateY(-50%);
+    font-size: 72px; /* Adjust size as needed */
+}
