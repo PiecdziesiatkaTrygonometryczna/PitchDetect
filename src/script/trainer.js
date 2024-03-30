@@ -1,7 +1,8 @@
 const notes = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
 const naturalNotes = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 const sharpNotes = ['A#', 'C#', 'D#', 'F#', 'G#'];
-
+let selectedNotes = [];
+let recentNotesArray = [];
 
 // create a checkbox for each note
 const checkboxesContainer = document.getElementById('checkboxes-container');
@@ -23,21 +24,19 @@ notes.forEach(note => {
 
 
 // handle form submit
-let selectedNotes = [];
 const form = document.getElementById('music-form');
 const selectedNotesContainer = document.getElementById('selected-notes');
 
-form.addEventListener('submit', function(event) {
+form.addEventListener('submit', function (event) {
     event.preventDefault();
 
     selectedNotes = [];
     const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
 
-    checkboxes.forEach(function(checkbox) {
+    checkboxes.forEach(function (checkbox) {
         selectedNotes.push(checkbox.value);
     });
-
-    selectedNotesContainer.textContent = 'Wybrane dźwięki: ' + selectedNotes.join(', ');
+    console.log(selectedNotes);
 });
 
 // functions to select specific notes
@@ -59,18 +58,40 @@ function selectAllNotes() {
 }
 
 
-
-
-// function to display a random note every n seconds
+// display a random note from selected notes
+const trainerSection = document.querySelector('.trainer');
+let intervalId;
 function displayRandomNote() {
-    setInterval(() => {
-        const randomIndex = Math.floor(Math.random() * selectedNotes.length);
-        const randomNote = selectedNotes[randomIndex];
-        
-        const randomNoteContainer = document.getElementById('random-note-container');
-        randomNoteContainer.textContent = randomNote;
-    }, 1000); // repeat rate
+    const randomIndex = Math.floor(Math.random() * selectedNotes.length);
+    const randomNote = selectedNotes[randomIndex];
+    trainerSection.textContent = randomNote;
 }
 
-displayRandomNote();
+// set an interval 
+function startDisplayingNotes() {
+    intervalId = setInterval(displayRandomNote, 2000);
+}
 
+// disable "start" button, if at least 2 notes aren't selected
+function checkSelectedNotes() {
+    const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
+    const selectedCount = checkboxes.length;
+    startButton.disabled = selectedCount < 2;
+}
+
+checkboxesContainer.addEventListener('change', checkSelectedNotes);
+
+// handle start button
+const startButton = document.querySelector('button[type="submit"]');
+startButton.addEventListener('click', function(event) {
+    if (startButton.disabled) {
+        event.preventDefault();
+        return;
+    }
+    startDisplayingNotes();
+});
+
+// handle stop
+function stopDisplayingNotes() {
+    clearInterval(intervalId);
+}

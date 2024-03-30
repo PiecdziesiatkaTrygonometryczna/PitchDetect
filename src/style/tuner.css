@@ -10,12 +10,16 @@ div.confident {
     color: rgb(255, 5, 192);
 }
 
+div.confident .off {
+    color: grey;
+}
+
 div.vague {
     color: rgb(255, 164, 207);
 }
 
 div.off {
-    color:  grey;
+    color: grey;
 }
 
 

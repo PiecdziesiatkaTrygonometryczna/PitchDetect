@@ -1,7 +1,12 @@
-#random-note-container {
-    position: fixed;
-    top: 50%;
-    right: 30vw;
-    transform: translateY(-50%);
-    font-size: 72px; /* Adjust size as needed */
+.trainer {
+    color: rgb(255, 45, 192);   
+    font-size: 100px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+}
+
+.settings {
+text-align: center;
 }

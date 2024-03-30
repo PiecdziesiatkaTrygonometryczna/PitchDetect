@@ -1,4 +1,11 @@
 body {
     background-color: rgb(24, 24, 24);
     color: rgb(255, 255, 255);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+
+body > div {
+
 }

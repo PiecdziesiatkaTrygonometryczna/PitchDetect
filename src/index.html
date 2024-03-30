@@ -13,38 +13,42 @@
 
 <body>
 
+	<div>
 
-	<p><button onclick="startPitchDetect();">Włącz stroik</button>
-		<button onclick="stopPitchDetect();">Wyłącz stroik</button>
-	</p>
 
-	<div id="detector" class="vague on">
-		<div class="pitch"><span id="pitch">--</span>Hz</div>
-		<div class="note"><span id="note">--</span></div>
-		<canvas id="output" width=300 height=42></canvas>
-		<div id="detune"><span id="detune_amt">--</span><span id="flat">cents &#9837;</span><span id="sharp">cents
-				&#9839;</span></div>
+		<p>
+			<button onclick="startPitchDetect();">Włącz stroik</button>
+			<button onclick="stopPitchDetect();">Wyłącz stroik</button>
+		</p>
+
+		<div id="detector" class="vague on">
+			<div class="pitch"><span id="pitch">--</span>Hz</div>
+			<div class="note"><span id="note">--</span></div>
+			<canvas id="output" width=300 height=42></canvas>
+			<div id="detune"><span id="detune_amt">--</span><span id="flat">cents &#9837;</span><span id="sharp">cents
+					&#9839;</span></div>
+		</div>
+
 	</div>
-	
 
 
 
-	<div class="trainer">
-		<p>Wybierz dźwięki do wyświetlania:</p>
+	<div class="settings">
+		<p>Wybierz dźwięki do ćwiczenia:</p>
 		<form id="music-form">
 			<div id="checkboxes-container"></div>
-			<button type="submit">Start</button>
+			<button type="submit" disabled>Start</button>
 		</form>
-		<div id="selected-notes"></div>
+		<button onclick="stopDisplayingNotes()">Stop</button>
 		<button onclick="selectAllNotes()">Zaznacz wszystkie dźwięki</button>
 		<button onclick="selectNaturalNotes()">Tylko naturalne dźwięki</button>
 		<button onclick="selectSharpNotes()">Tylko dźwięki z krzyżykami</button>
-
-		<div id="random-note-container"></div>
-
 	</div>
 
 
+
+    <div class="trainer">
+    </div>
 
 
 	<script src="script/trainer.js"></script>
