@@ -1,7 +1,7 @@
 .notes {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
 }
 
 .trainer {
@@ -14,11 +14,13 @@
 }
 
 .settings {
+    grid-column: span 3;
     text-align: center;
 }
 
 
 .recent-notes-container {
+    grid-column: span 2;    
     color: rgb(153, 153, 153);
     font-size: 25px;
     display: flex;
