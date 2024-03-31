@@ -18,9 +18,8 @@
     text-align: center;
 }
 
-
 .recent-notes-container {
-    grid-column: span 2;    
+    grid-column: span 2;
     color: rgb(153, 153, 153);
     font-size: 25px;
     display: flex;

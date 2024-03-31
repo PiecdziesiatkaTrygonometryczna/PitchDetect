@@ -1,0 +1,35 @@
+@media only screen and (max-width: 768px) {
+    body {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    #detector {
+        width: 200px;
+        height: 200px;
+        border-radius: 8px;
+        text-align: center;
+        padding-top: 10px;
+    }
+
+    #note {
+        font-size: 100px;
+    }
+
+    .trainer {
+        font-size: 50px;
+    }
+
+    .recent-notes-container {
+        font-size: 15px;
+    }
+    #recent-notes {
+        margin-right: 0;
+    }
+
+    .notes {
+        grid-column: span 3;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
