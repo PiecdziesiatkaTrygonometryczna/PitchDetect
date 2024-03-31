@@ -134,12 +134,11 @@ const form = document.getElementById('music-form');
 form.addEventListener('submit', handleFormSubmit);
 const startButton = document.querySelector('button[type="submit"]');
 startButton.addEventListener('click', function (event) {
-    if (startButton.disabled) {
-        event.preventDefault();
-        return;
-    }
+  if (!startButton.disabled) {
     startDisplayingNotes();
+  }
 });
+
 
 // handle stop
 function stopDisplayingNotes() {
