@@ -5,7 +5,7 @@ let selectedNotes = [];
 let recentNotesArray = [];
 const recentlyNotesToDisplay = 6;
 let interval = 2;
-
+let intervalId;
 
 // turn tuner on and off
 function toggleTuner() {
@@ -20,9 +20,6 @@ function toggleTuner() {
         detector.classList.add('off');
     }
 }
-
-
-
 
 // create a checkbox for each note
 const checkboxesContainer = document.getElementById('checkboxes-container');
@@ -44,20 +41,15 @@ notes.forEach(note => {
 
 
 // handle form submit
-const form = document.getElementById('music-form');
-const selectedNotesContainer = document.getElementById('selected-notes');
-
-form.addEventListener('submit', function (event) {
+function handleFormSubmit(event) {
     event.preventDefault();
-
     selectedNotes = [];
     const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
-
     checkboxes.forEach(function (checkbox) {
         selectedNotes.push(checkbox.value);
     });
-    // console.log(selectedNotes);
-});
+    checkSelectedNotes();
+}
 
 // functions to select specific notes
 function selectNaturalNotes() {
@@ -109,7 +101,6 @@ function displayRecentNotes() {
 
 // display a random note from selected notes
 const trainerSection = document.querySelector('.trainer');
-let intervalId;
 function displayRandomNote() {
     const randomIndex = Math.floor(Math.random() * selectedNotes.length);
     const randomNote = selectedNotes[randomIndex];
@@ -138,9 +129,11 @@ function checkSelectedNotes() {
 
 checkboxesContainer.addEventListener('change', checkSelectedNotes);
 
-// handle start button
+// handle start
+const form = document.getElementById('music-form');
+form.addEventListener('submit', handleFormSubmit);
 const startButton = document.querySelector('button[type="submit"]');
-startButton.addEventListener('click', function(event) {
+startButton.addEventListener('click', function (event) {
     if (startButton.disabled) {
         event.preventDefault();
         return;
@@ -152,3 +145,5 @@ startButton.addEventListener('click', function(event) {
 function stopDisplayingNotes() {
     clearInterval(intervalId);
 }
+const stopButton = document.querySelector('button[data-action="stop"]');
+stopButton.addEventListener('click', stopDisplayingNotes);
